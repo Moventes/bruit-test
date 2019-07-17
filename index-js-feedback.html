@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>bruit.io html test</title>
+    <meta name="description" content="Bruit.io test page">
+    <meta name="author" content="Moventes">
+
+
+    <script src="https://unpkg.com/@bruit/component@1.1.0-19/dist/start.js?apiKey=48f74108-4623-478f-a2ad-19f0d2596096"></script>
+</head>
+
+<body>
+    <h1>BRUIT.IO - test feedback (after 4s)</h1>
+    <script>
+        (function () {
+            setTimeout(() => {
+                console.log('SENDDDDDD');
+                var Bruit = document.querySelector('bruit-core');
+                console.log(Bruit);
+                //sendFeedback(data: BrtData[] = [], dataFn?: () => BrtData[] | Promise<BrtData[]>, agreement: boolean = false, screenshotConfig?: BrtScreenshot) 
+
+                var data = [{
+                    label: 'verion',
+                    value: '0.1.54'
+                }];
+
+                var dataFn = () => {
+                    return new Promise(resolve => {
+                        resolve([{
+                            label: 'user',
+                            value: '👾'
+                        }]);
+                    })
+                }
+
+                var agreement = true;
+
+                var screenshotConfig = {
+                    compression: 0.2
+                }
+
+                Bruit.sendFeedback(data, dataFn, agreement, screenshotConfig)
+                    .then(() => console.log('yeah!!!!'))
+                    .catch(console.error);
+            }, 4000);
+        })();
+    </script>
+</body>
+
+</html>

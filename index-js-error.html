@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>bruit.io html test</title>
+    <meta name="description" content="Bruit.io test page">
+    <meta name="author" content="Moventes">
+
+
+    <script src="https://unpkg.com/@bruit/component@1.1.0-19/dist/start.js?apiKey=48f74108-4623-478f-a2ad-19f0d2596096"></script>
+</head>
+<h1>BRUIT.IO - test error (after 4s)</h1>
+
+<body>
+
+    <script>
+        (function () {
+            setTimeout(() => {
+                console.log('SENDDDDDD');
+                var Bruit = document.querySelector('bruit-core');
+                console.log(Bruit);
+                Bruit.sendError('TEST OK!!!!')
+                    .then(() => console.log('yeah!!!!'))
+                    .catch(console.error);
+            }, 4000);
+        })();
+    </script>
+</body>
+
+</html>
