@@ -9,7 +9,7 @@
     <meta name="author" content="Moventes">
 
 
-    <script src="https://unpkg.com/@bruit/component@2.0.4-plop/dist/start.js?apiKey=48f74108-4623-478f-a2ad-19f0d2596096"></script>
+    <script src="https://unpkg.com/@bruit/component@2.0.14-plop/dist/start.js?apiKey=48f74108-4623-478f-a2ad-19f0d2596096"></script>
 </head>
 
 <body>
@@ -21,63 +21,67 @@
 
     <script>
         (function () {
-            var bruitIO = document.querySelector('bruit-io');
-            //bruitIO.addEventListener('onReady', () => {
-            console.log('ready');
-            bruitIO.setData([{
-                label: 'verion',
-                value: '0.1.54'
-            }]);
+            setTimeout(() => {
+                var bruitIO = document.querySelector('bruit-io');
+                //bruitIO.addEventListener('onReady', () => {
+                console.log('ready');
+                bruitIO.data = [{
+                    label: 'verion',
+                    value: '0.1.54'
+                }];
 
-            bruitIO.setDataFn(() => new Promise(resolve => {
-                resolve([{
-                    label: 'user',
-                    value: '👾'
-                }]);
-            }));
+                var fn = () => new Promise(resolve => {
+                    resolve([{
+                        label: 'user',
+                        value: '👾'
+                    }]);
+                });
+                bruitIO.dataFn = fn;
 
-            bruitIO.setConfig({
-                "labels": {
-                    "title": 'BRUIT.IO - test feedback button',
-                    "introduction": 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                    "button": 'send now'
-                },
-                "form": [{
-                    "label": 'email',
-                    "type": 'email',
-                    "required": true
-                },
-                {
-                    "label": 'firstname',
-                    "type": 'text'
-                },
-                {
-                    "label": 'lastname',
-                    "type": 'text'
-                },
-                {
-                    "label": '"note ": ',
-                    "type": 'rating',
-                    "value": 0,
-                    "max": 6
-                },
-                {
-                    "label": 'message',
-                    "type": 'textarea',
-                    "required": true
-                },
-                {
-                    "label": 'acceptez vous ot ezr tgorez ghrezoghhrezgh ezrfoghoezrhg szerufghhhhhu zoreghi ... ?',
-                    "type": 'checkbox',
-                    "id": 'agreement',
-                    "value": true
-                }
-                ],
-            });
+                //bruitIO.config = 
+                Bruit.openModal({
+                    "labels": {
+                        "title": 'BRUIT.IO - test feedback button',
+                        "introduction": 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                        "button": 'send now'
+                    },
+                    "form": [{
+                        "label": 'email',
+                        "type": 'email',
+                        "required": true
+                    },
+                    {
+                        "label": 'firstname',
+                        "type": 'text'
+                    },
+                    {
+                        "label": 'lastname',
+                        "type": 'text'
+                    },
+                    {
+                        "label": '"note ": ',
+                        "type": 'rating',
+                        "value": 0,
+                        "max": 6
+                    },
+                    {
+                        "label": 'message',
+                        "type": 'textarea',
+                        "required": true
+                    },
+                    {
+                        "label": 'acceptez vous ot ezr tgorez ghrezoghhrezgh ezrfoghoezrhg szerufghhhhhu zoreghi ... ?',
+                        "type": 'checkbox',
+                        "id": 'agreement',
+                        "value": true
+                    }
+                    ],
+                });
 
-            //});
+                //});
 
-
+            }, 4000
+            );
         })();
     </script>
 </body>
